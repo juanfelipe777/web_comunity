@@ -1,0 +1,258 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: #1F1F1F;
+  color: #FFF;
+  overflow-x: hidden;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column; /* Cambia a columna */
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. VARIABLES GLOBALES
+   ========================================================================== */
+:root {
+  --header-height: 15vh;
+  --gap: 1rem;
+  --bg-dark: #111;
+  --bg-card: #2a2a2a;
+  --bg-code: #333;
+  --accent-purple: #9B30FF; /* morado un poco más suave */
+  --accent-red: #CF2D3A;
+  --text-muted: #999;
+  --scroll-offset: calc(var(--header-height) + 2vh); /* Para compensar el header fijo */
+}
+
+/* Offset para anclas internas al usar href="#..." */
+:target {
+  scroll-margin-top: var(--scroll-offset);
+}
+
+/* ==========================================================================
+   3. HEADER
+   ========================================================================== */
+.header {
+  position: fixed;
+  inset: 0 0 auto 0; /* top:0; left:0; width:100% */
+  height: var(--header-height);
+  background:
+    #000
+    url("imagenes server/76c6b555ee6143b9b5da5142b4e3148f.jpg")
+    no-repeat right/contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--gap);
+  z-index: 100;
+}
+
+.header h1 {
+  color: var(--accent-purple);
+  font-size: 1.75rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ==========================================================================
+   4. CONTENEDOR & UTILIDADES
+   ========================================================================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.texto-imagen-izquierda {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.texto-imagen-izquierda img {
+  order: 0;
+  margin-right: var(--gap);
+  width: 20%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.texto-imagen-izquierda .texto {
+  order: 1;
+  flex: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   5. CONTENIDO PRINCIPAL
+   ========================================================================== */
+/* Eliminado bloque duplicado de .main-content para evitar conflictos */
+
+
+/* ==========================================================================
+   6. TIPOGRAFÍA & LISTAS
+   ========================================================================== */
+h2, h3 {
+  color: var(--accent-purple);
+  margin-bottom: 0.5rem;
+}
+
+p, li {
+  margin-bottom: var(--gap);
+}
+
+ul {
+  list-style: disc inside;
+  margin-bottom: var(--gap);
+}
+
+/* ==========================================================================
+   7. COMPONENTES
+   ========================================================================== */
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border-radius: 6px;
+  padding: var(--gap);
+  margin: var(--gap) 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Code blocks */
+pre, .code-block {
+  background: var(--bg-code);
+  border-radius: 6px;
+  padding: var(--gap);
+  overflow-x: auto;
+  font-family: monospace;
+  margin: var(--gap) 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--accent-red);
+  color: #FFF;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #a8202b;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   8. IMÁGENES
+   ========================================================================== */
+.contenedor {
+  display: flex;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  margin: var(--gap) 0;
+}
+
+.imagen {
+  width: 200px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* ==========================================================================
+   9. REFLEXIÓN
+   ========================================================================== */
+.reflexion {
+  display: flex;
+  justify-content: center;
+  margin: var(--gap) 0;
+}
+
+/* ==========================================================================
+   10. FOOTER
+   ========================================================================== */
+.footer {
+  background: var(--bg-dark);
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--gap);
+  margin-top: var(--gap);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   11. SIDEBAR ESTÁTICO
+   ========================================================================== */
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 20vw;
+  min-width: 180px;
+  max-width: 260px;
+  height: calc(100vh - var(--header-height));
+  background: var(--bg-card);
+  color: #fff;
+  padding: var(--gap);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  z-index: 90;
+}
+
+.sidebar a {
+  color: var(--accent-purple);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.sidebar a:hover {
+  color: var(--accent-red);
+}
+
+/* Ajusta el contenido principal para dejar espacio al sidebar */
+.main-content {
+  margin-top: var(--header-height);
+  width: calc(100vw - 20vw - 20vw); /* Ocupa el espacio restante */
+  max-width: 900px;
+  padding: var(--gap);
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: 28vw; /* Deja espacio para el sidebar y centra el contenido */
+}
+
+/* Responsive: oculta el sidebar en pantallas pequeñas */
+@media (max-width: 800px) {
+  body {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+  }
+  .main-content {
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--gap);
+    max-width: 95vw;
+    width: 100%;
+  }
+}
